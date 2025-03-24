@@ -4,6 +4,8 @@
 #!category = 🚫 Block ads
 #!tag = 广告拦截
 #!date = 2025-03-24
+#!包含 = 12306,阿里云盘,哔哩哔哩,滴滴出行,酷安,猫眼,拼多多,皮皮虾
+#!其他日期 = 哔哩哔哩 可莉 2024-11-15  皮皮虾 可莉 2025-03-06  微博 可莉 2025-02-28  快手 2025-03-07
 
 [General]
 force-http-engine-hosts = %APPEND% :8000
@@ -17,7 +19,7 @@ DOMAIN,ad.12306.cn,DIRECT,extended-matching
 # ======= A ======= #
 # 阿里云盘
 IP-CIDR,203.107.1.1/24,REJECT,no-resolve,pre-matching
-# 哔哩哔哩 可莉 2024-11-15
+# 哔哩哔哩
 URL-REGEX,"^http:\/\/upos-sz-static\.bilivideo\.com\/ssaxcode\/\w{2}\/\w{2}\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
 URL-REGEX,"^http:\/\/[\d\.]+:8000\/v1\/resource\/\w{32}-1-SPLASH",REJECT-TINYGIF,extended-matching
 
@@ -48,7 +50,7 @@ DOMAIN,th-b.pinduoduo.com,REJECT,extended-matching,pre-matching
 DOMAIN,th.pinduoduo.com,REJECT,extended-matching,pre-matching
 AND,((URL-REGEX,"^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/d",extended-matching),(USER-AGENT,"*com.xunmeng.pinduoduo*")),REJECT
 AND,((URL-REGEX,"^http:\/\/\[((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))\]\/d4\?",extended-matching),(USER-AGENT,"*com.xunmeng.pinduoduo*")),REJECT
-# 皮皮虾 可莉 2025-03-06 16:30:23
+# 皮皮虾
 AND,((DOMAIN-KEYWORD,-ad-,extended-matching),(DOMAIN-SUFFIX,byteimg.com,extended-matching)),REJECT,pre-matching
 AND,((DOMAIN-KEYWORD,-ttam-,extended-matching),(DOMAIN-SUFFIX,ibyteimg.com,extended-matching)),REJECT,pre-matching
 AND,((DOMAIN-KEYWORD,ssdk-,extended-matching),(DOMAIN-SUFFIX,pangle.io,extended-matching)),REJECT,pre-matching
@@ -99,7 +101,7 @@ DOMAIN-KEYWORD,video-cn.snssdk.com,REJECT,extended-matching,pre-matching
 DOMAIN-KEYWORD,asiad.byteactivity,REJECT,extended-matching,pre-matching
 
 # ======= W ======= #
-# 微博 可莉 2025-02-28
+# 微博 可莉
 DOMAIN-SUFFIX,uve.weibo.com,DIRECT,extended-matching
 DOMAIN,huodong.weibo.cn,REJECT,extended-matching,pre-matching
 DOMAIN-SUFFIX,biz.weibo.com,REJECT,extended-matching,pre-matching
@@ -119,8 +121,6 @@ DOMAIN,zxid-m.mobileservice.cn,REJECT,extended-matching,pre-matching
 IP-CIDR,103.41.167.237/32,REJECT,no-resolve,pre-matching
 IP-CIDR,118.89.204.198/32,REJECT,no-resolve,pre-matching
 IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT,no-resolve,pre-matching
-# 航旅纵横
-URL-REGEX,"^http?:\/\/(discardrp|startup)\.umetrip\.com\/gateway\/api\/umetrip\/native",REJECT,extended-matching
 
 # ======= Ohter ======= #
 # 直接拦截会暴力请求或者使用缓存广告数据
@@ -130,7 +130,8 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 
 
 [URL Rewrite]
-# ======= B ======= #哔哩哔哩
+# ======= B ======= #
+# 哔哩哔哩
 (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
 (^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
 
@@ -161,7 +162,7 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 ^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
 
 # ======= Z ======= #
-# 中国移动开屏广告 sdk1xyajs.data.kuiniuca.com, tower.ubixioe.com, client.app.coc.10086.cn
+# 中国移动开屏广告
 ^https:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/(explorePage\/getAdverList|init\/startInit) - reject
 ^https?:\/\/tower\.ubixioe\.com\/mob\/mediation - reject
 ^https?:\/\/sdk1xyajs\.data\.kuiniuca\.com - reject
@@ -201,7 +202,7 @@ http-response-jq ^https:\/\/beta-luna\.douyin\.com\/luna\/card\? 'if (getpath([]
 http-response-jq ^https:\/\/beta-luna\.douyin\.com\/luna\/more-panel\? 'delpaths([["blocks",1]])'
 
 # ======= W ======= #
-# 微信小程序 mcsp.cloudpnr.com, saas-ad.cloudpnr.com, rms.meituan.com
+# 微信小程序
 http-response-jq ^https:\/\/mcsp\.cloudpnr\.com\/api\/miniapp\/popular\/T_MINIAPP$ 'delpaths([["data"]])'
 http-response-jq ^https:\/\/saas-ad\.cloudpnr\.com\/huifuad-base-api\/api\/tactics\/ad$ 'delpaths([["data",0]])'
 http-response-jq ^https:\/\/saas-ad\.cloudpnr\.com\/huifuad-base-api\/api\/tactics\/ad$ 'delpaths([["data",1]])'
@@ -298,6 +299,9 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "reco
 ^https:\/\/api\.coolapk\.com\/v6\/search\?.*type=hotSearch data-type=text data="{}" status-code=200
 # 夸克
 ^https:\/\/stars\.shuqireader\.com\/kkios\/render\/load\/resource\/appConfig$ data-type=text data="{}" status-code=200
+# 快手
+^https:\/\/az2-api\.ksapisrv\.com\/rest\/n\/taskCenter\/task\/report\? data-type=text data="{}" status-code=200
+^https:\/\/az2-api\.ksapisrv\.com\/rest\/n\/ad\/ data-type=text data="{}" status-code=200
 
 # ======= M ======= #
 # 猫眼 ad.maoyan.com, wx.maoyan.com, vod-movie.maoyan.com, api.maoyan.com
@@ -480,6 +484,10 @@ body_rewrite_27 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/
 # ======= K ======= #
 # 夸克
 精简我的页面 = type=http-response, pattern=^https:\/\/open-cms-api\.quark\.cn\/open-cms, script-path=https://kelee.one/Resource/Script/QuarkBrowser/QuarkBrowser_remove_ads.js, requires-body=true
+# 快手
+body_rewrite_12 = type=http-response, pattern=^https:\/\/(apissl|az2-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22reskinConfig%22%2C%22sidebarExSquareStyle.moreList%22%2C%22sidebarExSquareStyle.topList%22%5D%5D%5D
+body_rewrite_14 = type=http-response, pattern=^https:\/\/az2-live\.ksapisrv\.com\/rest\/n\/live\/feed\/square\/refresh\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.banners%22%5D%5D%5D
+body_rewrite_18 = type=http-response, pattern=^https:\/\/az2-api-js\.gifshow\.com\/rest\/n\/user\/profile\/v2\?, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22postRecommends%22%5D%5D%5D
 
 # ======= P ======= #
 # 拼多多
@@ -542,10 +550,8 @@ body_rewrite_27 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/
 移除回答详情页推广 = type=http-response, pattern=^https:\/\/www\.zhihu\.com\/api\/v4\/(?:articles|answers)\/\d+\/recommendations?\?, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
 拦截服务器推送配置 config = type=http-response, pattern=^https:\/\/appcloud2\.zhihu\.com\/v3\/config, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
 拦截服务器推送配置 config all = type=http-response, pattern=^https:\/\/m-cloud\.zhihu\.com\/api\/cloud\/zhihu\/config\/all\?, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
-# 航旅纵横
-移除首页广告 = type=http-response, pattern=^http?:\/\/(114\.115\.217\.129)|(home\.umetrip\.com)\/gateway\/api\/umetrip\/native$, script-path=https://kelee.one/Resource/Script/Umetrip/Umetrip_remove_ads.js
 
 
 [MITM]
 h2 = true
-hostname = %APPEND% client.app.coc.10086.cn,mp.weixin.qq.com,webappcfg.paas.cmbchina.com,ad.12306.cn,mobile.12306.cn,spclient.wg.spotify.com,api.m.jd.com,sdk1xyajs.data.kuiniuca.com,tower.ubixioe.com,client.app.coc.10086.cn,htwkop.xiaojukeji.com,ad.maoyan.com,wx.maoyan.com,vod-movie.maoyan.com,api.maoyan.com,acs.m.taobao.com,heic.alicdn.com,guide-acs.m.taobao.com,poplayer.template.alibaba.com,capi.lkcoffee.com,cn-acs.m.cainiao.com,guide-acs.m.taobao.com,video-dsp.pddpic.com,t-dsp.pinduoduo.com,images.pinduoduo.com,app.zhuanzhuan.com,api.coolapk.com,acs.m.goofish.com,g-acs.m.goofish.com,api.alipan.com,member.alipan.com,bizapi.alipan.com,api.douban.com,frodo.douban.com,m.douban.com,acs.m.taobao.com,common.diditaxi.com.cn,freight.xiaojukeji.com,daijia.kuaidadi.com,162.14.157.*,ct.xiaojukeji.com,res.xiaojukeji.com,conf.diditaxi.com.cn,api.udache.com,mcsp.cloudpnr.com,saas-ad.cloudpnr.com,rms.meituan.com,api.pinduoduo.com,api.yangkeduo.com,webcast-open.douyin.com,beta-luna.douyin.com,account.95516.com,base.95516.com,content.95516.com,gslbali.ximalaya.com,search.ximalaya.com,searchwsa.ximalaya.com,mobile.ximalaya.com,mobilehera.ximalaya.com,mobwsa.ximalaya.com,m.ximalaya.com,mwsa.ximalaya.com,*.zhihu.com,weixin110.qq.com,security.wechat.com,m.baidu.com,www.baidu.com,huichuan.sm.cn,stars.shuqireader.com,open-cms-api.quark.cn,api.pipix.com,api5-lq.pipix.com,ap?.bilibili.com,grpc.biliapi.net,www.bilibili.com,m.bilibili.com,*live.bilibili.com,*.weibo.cn,*.weibo.com,weibo.com
+hostname = %APPEND% client.app.coc.10086.cn,mp.weixin.qq.com,webappcfg.paas.cmbchina.com,ad.12306.cn,mobile.12306.cn,spclient.wg.spotify.com,api.m.jd.com,sdk1xyajs.data.kuiniuca.com,tower.ubixioe.com,client.app.coc.10086.cn,htwkop.xiaojukeji.com,ad.maoyan.com,wx.maoyan.com,vod-movie.maoyan.com,api.maoyan.com,acs.m.taobao.com,heic.alicdn.com,guide-acs.m.taobao.com,poplayer.template.alibaba.com,capi.lkcoffee.com,cn-acs.m.cainiao.com,guide-acs.m.taobao.com,video-dsp.pddpic.com,t-dsp.pinduoduo.com,images.pinduoduo.com,app.zhuanzhuan.com,api.coolapk.com,acs.m.goofish.com,g-acs.m.goofish.com,api.alipan.com,member.alipan.com,bizapi.alipan.com,api.douban.com,frodo.douban.com,m.douban.com,acs.m.taobao.com,common.diditaxi.com.cn,freight.xiaojukeji.com,daijia.kuaidadi.com,162.14.157.*,ct.xiaojukeji.com,res.xiaojukeji.com,conf.diditaxi.com.cn,api.udache.com,mcsp.cloudpnr.com,saas-ad.cloudpnr.com,rms.meituan.com,api.pinduoduo.com,api.yangkeduo.com,webcast-open.douyin.com,beta-luna.douyin.com,account.95516.com,base.95516.com,content.95516.com,gslbali.ximalaya.com,search.ximalaya.com,searchwsa.ximalaya.com,mobile.ximalaya.com,mobilehera.ximalaya.com,mobwsa.ximalaya.com,m.ximalaya.com,mwsa.ximalaya.com,*.zhihu.com,weixin110.qq.com,security.wechat.com,m.baidu.com,www.baidu.com,huichuan.sm.cn,stars.shuqireader.com,open-cms-api.quark.cn,api.pipix.com,api5-lq.pipix.com,ap?.bilibili.com,grpc.biliapi.net,www.bilibili.com,m.bilibili.com,*live.bilibili.com,*.weibo.cn,*.weibo.com,weibo.com,az4-api.ksapisrv.com,az4-api-idc.ksapisrv.com,az2-api.ksapisrv.com,az2-api-idc.ksapisrv.com,apissl.gifshow.com,apissl.ksapisrv.com,az2-api-js.gifshow.com,az2-live.ksapisrv.com
