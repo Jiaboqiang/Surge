@@ -5,7 +5,7 @@
 #!tag = 广告拦截
 #!date = 2025-03-24
 #!包含 = 12306,阿里云盘,哔哩哔哩,滴滴出行,酷安,猫眼,拼多多,皮皮虾
-#!其他日期 = 哔哩哔哩 可莉 2024-11-15  皮皮虾 可莉 2025-03-06  微博 可莉 2025-02-28  快手 2025-03-07
+#!其他日期 = 哔哩哔哩 2024-11-15  皮皮虾 2025-03-06  微博 2025-02-28  快手 2025-03-07  斗鱼 2024-11-28  最右 2024-11-28  汽车之家 2024-11-28  虎扑 2024-11-28
 
 [General]
 force-http-engine-hosts = %APPEND% :8000
@@ -29,6 +29,15 @@ DOMAIN,hd.xiaojukeji.com,REJECT,extended-matching,pre-matching
 DOMAIN,gwp.xiaojukeji.com,REJECT,extended-matching,pre-matching
 AND,((IP-ASN,45090,no-resolve), (DEST-PORT,25641), (PROTOCOL,TCP)),REJECT
 AND,((IP-ASN,63646,no-resolve), (DEST-PORT,25641), (PROTOCOL,TCP)),REJECT
+# 斗鱼
+URL-REGEX,"^http:\/\/203\.107\.1\.33\/\d+\/ss",REJECT,extended-matching
+URL-REGEX,"^http:\/\/203\.107\.1\.34\/\d+\/ss",REJECT,extended-matching
+URL-REGEX,"^http:\/\/linkmicschedule\.douyucdn\.cn\/im_schedule\/im_gate_list",REJECT,extended-matching
+IP-CIDR,119.29.29.98/32,REJECT,no-resolve,pre-matching
+IP-CIDR,119.29.29.99/32,REJECT,no-resolve,pre-matching
+AND,((DEST-PORT,18000),(PROTOCOL,STUN)),REJECT
+DOMAIN,stun1.douyucdn.cn,REJECT,extended-matching,pre-matching
+DOMAIN,stun1.qvb.qcloud.com,REJECT,extended-matching,pre-matching
 
 # ======= K ======= #
 # 酷安
@@ -100,6 +109,13 @@ DOMAIN-KEYWORD,-ad.byteoversea.com,REJECT,extended-matching,pre-matching
 DOMAIN-KEYWORD,video-cn.snssdk.com,REJECT,extended-matching,pre-matching
 DOMAIN-KEYWORD,asiad.byteactivity,REJECT,extended-matching,pre-matching
 
+# ======= Q ======= #
+# 汽车之家
+IP-CIDR,119.29.29.98/32,REJECT,no-resolve,pre-matching
+IP-CIDR,119.29.29.99/32,REJECT,no-resolve,pre-matching
+URL-REGEX,"^http:\/\/182\.254\.116\.116\/d",REJECT,extended-matching
+DOMAIN,adproxy.autohome.com.cn,REJECT,extended-matching,pre-matching
+
 # ======= W ======= #
 # 微博 可莉
 DOMAIN-SUFFIX,uve.weibo.com,DIRECT,extended-matching
@@ -121,6 +137,30 @@ DOMAIN,zxid-m.mobileservice.cn,REJECT,extended-matching,pre-matching
 IP-CIDR,103.41.167.237/32,REJECT,no-resolve,pre-matching
 IP-CIDR,118.89.204.198/32,REJECT,no-resolve,pre-matching
 IP-CIDR6,2402:4e00:1200:ed00:0:9089:6dac:96b6/128,REJECT,no-resolve,pre-matching
+# 最右
+DOMAIN,toblog.ctobsnssdk.com,REJECT,extended-matching,pre-matching
+DOMAIN,mon.zijieapi.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,api-access.pangolin-sdk-toutiao,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,-fe-tos.pglstatp-toutiao.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,-be-pack-sign.pglstatp-toutiao.com,REJECT,extended-matching,pre-matching
+DOMAIN-KEYWORD,log-api.pangolin-sdk-toutiao,REJECT,extended-matching,pre-matching
+DOMAIN,cnlogs.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,errlog.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,ucc.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,ulogs.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,utoken.umeng.com,REJECT,extended-matching,pre-matching
+DOMAIN,adsmind.ugdtimg.com,REJECT,extended-matching,pre-matching
+DOMAIN,ios.bugly.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,mi.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,pgdt.ugdtimg.com,REJECT,extended-matching,pre-matching
+DOMAIN,sdk.e.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,win.gdt.qq.com,REJECT,extended-matching,pre-matching
+DOMAIN,gdfp.gifshow.com,REJECT,extended-matching,pre-matching
+DOMAIN,open.e.kuaishou.com,REJECT,extended-matching,pre-matching
+DOMAIN-SUFFIX,adukwai.com,REJECT,extended-matching,pre-matching
+DOMAIN,adapi.izuiyou.com,REJECT,extended-matching,pre-matching
+URL-REGEX,"^http:\/\/mercury-gateway\.ixiaochuan\.cn\/mercury\/v1\/ad\/",REJECT-TINYGIF,extended-matching
+URL-REGEX,"^http:\/\/file-share\.izuiyou\.com\/octopus\/media\/templates\/search_home_page_(nv|nv_v2)\/search_home_page_nv",REJECT,extended-matching
 
 # ======= Ohter ======= #
 # 直接拦截会暴力请求或者使用缓存广告数据
@@ -134,6 +174,10 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 # 哔哩哔哩
 (^https:\/\/live\.bilibili\.com\/\d+)(\/?\?.*) $1 302
 (^https:\/\/(?:www|m)\.bilibili\.com\/video\/(?:BV\w{10}|av\d{9}))(\/?\?.*) $1 302
+
+# ======= D ======= #
+# 斗鱼
+^(http:\/\/)((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/(hlsh5p1\.douyucdn2\.cn)(.*) $1$5$6 307
 
 # ======= K ======= #
 # 夸克
@@ -170,6 +214,17 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
 ^https:\/\/www\.zhihu\.com\/appview\/v3\/zhmore - reject
 ^https:\/\/link\.zhihu\.com\/\?target=(?:https?)?(?:%3A|:)?(?:\/\/|%2F%2F)?(.*) http://$1 307
+# 最右
+^https?:\/\/api\.izuiyou\.com\/ad\/ - reject
+^https:\/\/gromore\.pangolin-sdk-toutiao\.com\/api\/ad\/ - reject
+^https:\/\/lf-cdn-tos\.bytescm\.com\/obj\/static\/ad\/ - reject
+^https?:\/\/203\.107\.1\.1/\d+/ss - reject
+^https?:\/\/203\.107\.1\.33/\d+/ss - reject
+^https?:\/\/203\.107\.1\.66/\d+/ss - reject
+^https?:\/\/203\.107\.1\.67/\d+/ss - reject
+^https?:\/\/203\.107\.1\.97/\d+/ss - reject
+^https?:\/\/2401:b180:2000:30::1c\/\d+\/d - reject
+^https?:\/\/2401:b180:2000:20::10\/\d+\/d - reject
 
 
 [Body Rewrite]
@@ -289,6 +344,19 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "reco
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v\d\/other\/fast data-type=text data="{}" status-code=200
 ^https:\/\/conf\.diditaxi\.com\.cn\/dynamic\/conf data-type=text data="{}" status-code=200
 ^https:\/\/conf\.diditaxi\.com\.cn\/homepage\/v1\/other\/slow data-type=text data="{}" status-code=200
+# 斗鱼
+^https:\/\/rtbapi\.douyucdn\.cn\/japi\/sign\/app\/getinfo data-type=text data="{}" status-code=200
+
+# ======= H ======= #
+# 虎扑
+^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/bplapi\/reddot\/v1\/app\/getReddot data-type=text data="{}" status-code=200
+^https:\/\/bbs\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/(bbsallapi\/tag\/v1\/heatTag|bbsrankapi\/v1\/rating\/list) data-type=text data="{}" status-code=200
+^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/search\/v2\/(hintkeylist|hotkeylist) data-type=text data="{}" status-code=200
+^https:\/\/goblin\.hupu\.com\/\d\/\d\.\d\.\d+\/interfaceAd\/getOther\/v\d data-type=text data="{}" status-code=200
+^https:\/\/goblin\.hupu\.com\/\d\/\d\.\d\.\d+\/interfaceAd\/getOther\/batch data-type=text data="{}" status-code=200
+^https:\/\/fairy\.mobileapi\.hupu\.com\/gallery\/getmod2 data-type=text data=" " status-code=200
+^https:\/\/games\.mobileapi\.hupu\.com\/3\/8\.0\.86\/bplcommentapi\/bpl\/score_tab\/groups data-type=text data="{}" status-code=200
+^https:\/\/games\.mobileapi\.hupu\.com\/3\/8\.0\.86\/bplapi\/banner\/getLocationBanners data-type=text data="{}" status-code=200
 
 # ======= J ======= #
 # 京东
@@ -337,6 +405,26 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "reco
 ^https:\/\/webcast-open\.douyin\.com\/webcast\/openapi\/feed\/\? data-type=text data="{}" status-code=200
 ^https:\/\/beta-luna\.douyin\.com\/luna\/commerce\/upsells\? data-type=text data="{}" status-code=200
 ^https:\/\/beta-luna\.douyin\.com\/luna\/commerce\/v2\/commerce_info\? data-type=text data="{}" status-code=200
+# 汽车之家
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/findEquitysV5 data-type=text data="{}" status-code=200
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/mycardv6 data-type=text data="{}" status-code=200
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/chat\/gse\/recquery data-type=text data="{}" status-code=200
+^https:\/\/autoapi\.autohome\.com\.cn\/ypttd\/yjc\/web\/mkgt\/act\/seckillInfo data-type=text data="{}" status-code=200
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/gethotactcards data-type=text data="{}" status-code=200
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/carcard\/extendedcards data-type=text data="{}" status-code=200
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getwashcarlist data-type=text data="{}" status-code=200
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getdealertab data-type=text data="{}" status-code=200
+^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/usercenter\/getoillist data-type=text data="{}" status-code=200
+^https:\/\/pcmx\.autohome\.com\.cn\/queryCreativeList data-type=text data="{}" status-code=200
+^https:\/\/maam\.pingan\.com\.cn\/maam\/buoy\/getBuoyList\.do data-type=text data="{}" status-code=200
+^https:\/\/news\.app\.autohome\.com\.cn\/cont_v\d+(?:\.\d+){2}\/api\/article\/extenddata data-type=text data="{}" status-code=200
+^https:\/\/adproxy\.autohome\.com\.cn\/AdvertiseService\/AppHandler\.ashx data-type=text data="{}" status-code=200
+^https:\/\/club\.app\.autohome\.com\.cn\/club_v\d+(?:\.\d+){2}\/club\/channelqa\/header data-type=text data="{}" status-code=200
+^https:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=super\.list data-type=text data="{}" status-code=200
+^https:\/\/autoapi\.autohome\.com\.cn\/arvr-dealercloud-api\/online\/aggregation\/exhibitionList data-type=text data="{}" status-code=200
+^https:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=vrcore\.list data-type=text data="{}" status-code=200
+^https:\/\/dealer\.m\.autohome\.com\.cn\/handler\/other\/getdata\?__action=platform\.search data-type=text data="{}" status-code=200
+^https:\/\/a\.athm\.cn\/clientlive\.api\.autohome\.com\.cn\/api\/live\/getserieswindowsinfo data-type=text data="{}" status-code=200
 
 # ======= W ======= #
 # 微信公众号底部
@@ -430,6 +518,10 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "reco
 ^https:\/\/www\.zhihu\.com\/api\/v4/(?:answers|questions)\/\d+/related-readings data-type=text data="{}" status-code=200
 ^https:\/\/www\.zhihu\.com\/commercial_api\/banners_v3\/mobile_banner data-type=text data="{}" status-code=200
 ^https:\/\/zhuanlan\.zhihu\.com\/api\/articles\/\d+\/recommendation data-type=text data="{}" status-code=200
+# 最右
+^https?:\/\/api\.izuiyou\.com\/config\/get_banner data-type=text data="{}" status-code=200
+^https:\/\/zyfile\.izuiyou\.com\/zyfile\/c2\/a0\/[a-z0-9-]+\.json data-type=text data="{}" status-code=200
+
 
 [Script]
 # ======= 0 ======= #
@@ -477,6 +569,19 @@ body_rewrite_27 = type=http-response, pattern=^https:\/\/app\.bilibili\.com\/x\/
 # 支付宝 - 菜鸟小程序
 移除菜鸟小程序推广 = type=http-response, pattern=^https:\/\/guide-acs\.m\.taobao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads\.mshow, script-path=https://kelee.one/Resource/Script/Cainiao/Cainiao_remove_ads.js, requires-body=true
 
+# ======= D ======= #
+# 斗鱼
+body_rewrite_23 = type=http-response, pattern=^https:\/\/apiv2\.douyucdn\.cn\/japi\/entrance\/roomRes\/nc\/m\/list, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-del%22%2C%5B%22data.pendant_a%22%2C%22data.entrance_d%22%5D%5D%5D
+body_rewrite_24 = type=http-response, pattern=^https:\/\/venus\.douyucdn\.cn\/venus\/config\/static\/update.+keyCodeSet=flow_config, script-path=https://raw.githubusercontent.com/Script-Hub-Org/Script-Hub/main/scripts/body-rewrite.js, requires-body=true, max-size=-1, timeout=30, argument=%5B%5B%22json-replace%22%2C%5B%5B%22greatGodGameSitterSwitch%22%2C0%5D%2C%5B%22followMoreAnchorEntrance%22%2C0%5D%2C%5B%22sdklivebanner%22%2C0%5D%2C%5B%22homeActFloatSwitch%22%2C0%5D%2C%5B%22bringGoodsSwitch%22%2C0%5D%2C%5B%22qqGameSwitch%22%2C0%5D%5D%5D%5D
+移除首页轮播图和视频流广告 = type=http-response, pattern=^https:\/\/apiv2\.douyucdn\.cn\/mgapi\/livenc\/home\/getRecV3, script-path=https://kelee.one/Resource/Script/Douyu/Douyu_remove_ads.js, requires-body=true
+
+# ======= H ======= #
+# 虎扑
+移除虎扑广告 = type=http-response, pattern=^https:\/\/fairy\.mobileapi\.hupu\.com\/mang\/preview\/banners, script-path=https://kelee.one/Resource/Script/HUPU/HUPU_remove_ads.js, requires-body=true
+移除虎扑广告 = type=http-response, pattern=^https:\/\/bbs\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/bbsallapi\/lego\/data, script-path=https://kelee.one/Resource/Script/HUPU/HUPU_remove_ads.js, requires-body=true
+移除虎扑广告 = type=http-response, pattern=^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/buffer\/hotList, script-path=https://kelee.one/Resource/Script/HUPU/HUPU_remove_ads.js, requires-body=true
+移除虎扑广告 = type=http-response, pattern=^https:\/\/games\.mobileapi\.hupu\.com\/\d\/\d\.\d\.\d+\/bplapi\/user\/v1\/more, script-path=https://kelee.one/Resource/Script/HUPU/HUPU_remove_ads.js, requires-body=true
+
 # ======= J ======= #
 # 京东
 移除京东广告 = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://kelee.one/Resource/Script/JD/JD_remove_ads.js, requires-body=true
@@ -494,8 +599,15 @@ body_rewrite_18 = type=http-response, pattern=^https:\/\/az2-api-js\.gifshow\.co
 精简首页 = type=http-response, pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\?, script-path=https://kelee.one/Resource/Script/PinDuoDuo/PinDuoDuo_remove_ads.js, requires-body=true
 
 # ======= Q ======= #
-# 滴滴青桔
+# 青桔
 滴滴青桔去广告 = type=http-response, pattern=^https:\/\/htwkop\.xiaojukeji\.com\/gateway\?api=hm\.fa\.homeConfig, script-path=https://kelee.one/Resource/Script/WexinMiniPrograms/qingju/qingju.js, requires-body=true
+#汽车之家
+精简我的页面 = type=http-response, pattern=^https:\/\/news\.app\.autohome\.com\.cn\/news_v\d+(?:\.\d+){2}\/news\/homenavigation, script-path=https://kelee.one/Resource/Script/AutoHome/AutoHome_remove_ads.js, requires-body=true
+精简我的页面 = type=http-response, pattern=^https:\/\/(a\.athm\.cn\/)?mobile\.app\.autohome\.com\.cn\/platform\/carserver\/((usercenter\/getservicecards)|(carcard\/allcard)|(carcard\/mycardv\d+)|(carcard\/cards)), script-path=https://kelee.one/Resource/Script/AutoHome/AutoHome_remove_ads.js, requires-body=true
+社区广场去广告 = type=http-response, pattern=^https:\/\/(a\.athm\.cn\/)?club\.app\.autohome\.com\.cn\/club_v\d+(?:\.\d+){2}\/club\/index\/businessv\d+, script-path=https://kelee.one/Resource/Script/AutoHome/AutoHome_remove_ads.js, requires-body=true
+移除直播浮窗 = type=http-response, pattern=^https:\/\/(a\.athm\.cn\/)?cars\.app\.autohome\.com\.cn\/carstreaming\/selectcarportal\/reclist, script-path=https://kelee.one/Resource/Script/AutoHome/AutoHome_remove_ads.js, requires-body=true
+移除报价页面直播内容 = type=http-response, pattern=^https:\/\/(a\.athm\.cn\/)?cars\.app\.autohome\.com\.cn\/carstreaming\/selectcarportal\/seriestopwithtagscard, script-path=https://kelee.one/Resource/Script/AutoHome/AutoHome_remove_ads.js, requires-body=true
+移除二手车竖版轮播图 = type=http-response, pattern=^https:\/\/(a\.athm\.cn\/)?apiautoappusc\.che168\.com\/apic\/v\d+\/gethomepagefeed, script-path=https://kelee.one/Resource/Script/AutoHome/AutoHome_remove_ads.js, requires-body=true
 
 # ======= W ======= #
 # 滴滴青桔
@@ -554,4 +666,4 @@ body_rewrite_18 = type=http-response, pattern=^https:\/\/az2-api-js\.gifshow\.co
 
 [MITM]
 h2 = true
-hostname = %APPEND% client.app.coc.10086.cn,mp.weixin.qq.com,webappcfg.paas.cmbchina.com,ad.12306.cn,mobile.12306.cn,spclient.wg.spotify.com,api.m.jd.com,sdk1xyajs.data.kuiniuca.com,tower.ubixioe.com,client.app.coc.10086.cn,htwkop.xiaojukeji.com,ad.maoyan.com,wx.maoyan.com,vod-movie.maoyan.com,api.maoyan.com,acs.m.taobao.com,heic.alicdn.com,guide-acs.m.taobao.com,poplayer.template.alibaba.com,capi.lkcoffee.com,cn-acs.m.cainiao.com,guide-acs.m.taobao.com,video-dsp.pddpic.com,t-dsp.pinduoduo.com,images.pinduoduo.com,app.zhuanzhuan.com,api.coolapk.com,acs.m.goofish.com,g-acs.m.goofish.com,api.alipan.com,member.alipan.com,bizapi.alipan.com,api.douban.com,frodo.douban.com,m.douban.com,acs.m.taobao.com,common.diditaxi.com.cn,freight.xiaojukeji.com,daijia.kuaidadi.com,162.14.157.*,ct.xiaojukeji.com,res.xiaojukeji.com,conf.diditaxi.com.cn,api.udache.com,mcsp.cloudpnr.com,saas-ad.cloudpnr.com,rms.meituan.com,api.pinduoduo.com,api.yangkeduo.com,webcast-open.douyin.com,beta-luna.douyin.com,account.95516.com,base.95516.com,content.95516.com,gslbali.ximalaya.com,search.ximalaya.com,searchwsa.ximalaya.com,mobile.ximalaya.com,mobilehera.ximalaya.com,mobwsa.ximalaya.com,m.ximalaya.com,mwsa.ximalaya.com,*.zhihu.com,weixin110.qq.com,security.wechat.com,m.baidu.com,www.baidu.com,huichuan.sm.cn,stars.shuqireader.com,open-cms-api.quark.cn,api.pipix.com,api5-lq.pipix.com,ap?.bilibili.com,grpc.biliapi.net,www.bilibili.com,m.bilibili.com,*live.bilibili.com,*.weibo.cn,*.weibo.com,weibo.com,az4-api.ksapisrv.com,az4-api-idc.ksapisrv.com,az2-api.ksapisrv.com,az2-api-idc.ksapisrv.com,apissl.gifshow.com,apissl.ksapisrv.com,az2-api-js.gifshow.com,az2-live.ksapisrv.com
+hostname = %APPEND% client.app.coc.10086.cn,mp.weixin.qq.com,webappcfg.paas.cmbchina.com,ad.12306.cn,mobile.12306.cn,spclient.wg.spotify.com,api.m.jd.com,sdk1xyajs.data.kuiniuca.com,tower.ubixioe.com,client.app.coc.10086.cn,htwkop.xiaojukeji.com,ad.maoyan.com,wx.maoyan.com,vod-movie.maoyan.com,api.maoyan.com,acs.m.taobao.com,heic.alicdn.com,guide-acs.m.taobao.com,poplayer.template.alibaba.com,capi.lkcoffee.com,cn-acs.m.cainiao.com,guide-acs.m.taobao.com,video-dsp.pddpic.com,t-dsp.pinduoduo.com,images.pinduoduo.com,app.zhuanzhuan.com,api.coolapk.com,acs.m.goofish.com,g-acs.m.goofish.com,api.alipan.com,member.alipan.com,bizapi.alipan.com,api.douban.com,frodo.douban.com,m.douban.com,acs.m.taobao.com,common.diditaxi.com.cn,freight.xiaojukeji.com,daijia.kuaidadi.com,162.14.157.*,ct.xiaojukeji.com,res.xiaojukeji.com,conf.diditaxi.com.cn,api.udache.com,mcsp.cloudpnr.com,saas-ad.cloudpnr.com,rms.meituan.com,api.pinduoduo.com,api.yangkeduo.com,webcast-open.douyin.com,beta-luna.douyin.com,account.95516.com,base.95516.com,content.95516.com,gslbali.ximalaya.com,search.ximalaya.com,searchwsa.ximalaya.com,mobile.ximalaya.com,mobilehera.ximalaya.com,mobwsa.ximalaya.com,m.ximalaya.com,mwsa.ximalaya.com,*.zhihu.com,weixin110.qq.com,security.wechat.com,m.baidu.com,www.baidu.com,huichuan.sm.cn,stars.shuqireader.com,open-cms-api.quark.cn,api.pipix.com,api5-lq.pipix.com,ap?.bilibili.com,grpc.biliapi.net,www.bilibili.com,m.bilibili.com,*live.bilibili.com,*.weibo.cn,*.weibo.com,weibo.com,az4-api.ksapisrv.com,az4-api-idc.ksapisrv.com,az2-api.ksapisrv.com,az2-api-idc.ksapisrv.com,apissl.gifshow.com,apissl.ksapisrv.com,az2-api-js.gifshow.com,az2-live.ksapisrv.com,rtbapi.douyucdn.cn,apiv2.douyucdn.cn,venus.douyucdn.cn,api.izuiyou.com,gromore.pangolin-sdk-toutiao.com,lf-cdn-tos.bytescm.com,zyfile.izuiyou.com,203.107.1.1,203.107.1.33,203.107.1.66,203.107.1.67,203.107.1.97,a.athm.cn,adproxy.autohome.com.cn,apiautoappusc.che168.com,autoapi.autohome.com.cn,cars.app.autohome.com.cn,clientlive.api.autohome.com.cn,club.app.autohome.com.cn,dealer.m.autohome.com.cn,maam.pingan.com.cn,mobile.app.autohome.com.cn,news.app.autohome.com.cn,pcmx.autohome.com.cn,games.mobileapi.hupu.com,fairy.mobileapi.hupu.com,bbs.mobileapi.hupu.com,goblin.hupu.com
