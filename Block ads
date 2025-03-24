@@ -89,6 +89,10 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 ^https:\/\/capi\.lkcoffee\.com\/resource\/m\/eorder\/product\/popAppTagProductList - reject
 ^https:\/\/capi\.lkcoffee\.com\/resource\/m\/sys\/app\/adposNew - reject
 
+# ======= X ======= #
+# 云闪付
+^https:\/\/wallet\.95516\.com(:10533)?\/s\/wl\/icon\/large\/1 - reject
+
 # ======= Z ======= #
 # 中国移动开屏广告 sdk1xyajs.data.kuiniuca.com, tower.ubixioe.com, client.app.coc.10086.cn
 ^https:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/(explorePage\/getAdverList|init\/startInit) - reject
@@ -370,6 +374,12 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "reco
 移除首页信息流推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.nextfresh\/, script-path=https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body=true
 移除首页顶部标签推广 = type=http-response, pattern=^https:\/\/(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlehome\.home\.circle\.list\/, script-path=https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body=true
 移除搜索结果广告 = type=http-response, pattern=^https:\/\/g-(g-)?acs\.m\.goofish\.com\/gw\/mtop\.taobao\.idlemtopsearch\.search\/, script-path=https://kelee.one/Resource/Script/FleaMarket/FleaMarket_remove_ads.js, requires-body=true
+
+# ======= Y ======= #
+# 云闪付
+移除云闪付推广 = type=http-response, pattern=^https:\/\/base\.95516\.com\/app\/inApp\/sys\/appShowGroup\/, script-path=https://kelee.one/Resource/Script/UnionPay/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
+移除云闪付推广 = type=http-response, pattern=^https:\/\/account\.95516\.com\/fortune\/inApp\/common\/, script-path=https://kelee.one/Resource/Script/UnionPay/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
+移除云闪付推广 = type=http-response, pattern=^https:\/\/content\.95516\.com\/koala-pre\/koala\/(recommend\/hotList|right\/queryAllRights), script-path=https://kelee.one/Resource/Script/UnionPay/UnionPay_remove_ads_with_ssl_unpinning.js, requires-body=true
 
 # ======= Z ======= #
 # 转转
