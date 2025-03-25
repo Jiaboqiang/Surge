@@ -1,11 +1,11 @@
 #!name = Block ads | 自用广告拦截合集
-#!desc = 名称： 自用广告拦截合集 \n作者： RuCu6 Keywos fmz200 可莉🅥 QingRex 茉莉 \n说明： 自用广告拦截合集 \n时间： 2025-03-24
+#!desc = 名称： 自用广告拦截合集 \n作者： RuCu6 Keywos fmz200 可莉🅥 QingRex 茉莉 \n说明： 自用广告拦截合集 \n时间： 2025-03-25
 #!author = RuCu6 Keywos fmz200 可莉🅥 QingRex 茉莉
 #!category = 🚫 Block ads
 #!tag = 广告拦截
-#!date = 2025-03-24
+#!date = 2025-03-25
 #!包含 = 12306,阿里云盘,哔哩哔哩,滴滴出行,酷安,猫眼,拼多多,皮皮虾
-#!其他日期 = 哔哩哔哩 2024-11-15  皮皮虾 2025-03-06  微博 2025-02-28  快手 2025-03-07  斗鱼 2024-11-28  最右 2024-11-28  汽车之家 2024-11-28  虎扑 2024-11-28
+#!其他日期 = 哔哩哔哩 2024-11-15  皮皮虾 2025-03-06  微博 2025-02-28  快手 2025-03-07  斗鱼 2024-11-28  最右 2024-11-28  汽车之家 2024-11-28  虎扑 2024-11-28  网易云音乐 2024-10-11
 
 [General]
 force-http-engine-hosts = %APPEND% :8000
@@ -117,10 +117,18 @@ URL-REGEX,"^http:\/\/182\.254\.116\.116\/d",REJECT,extended-matching
 DOMAIN,adproxy.autohome.com.cn,REJECT,extended-matching,pre-matching
 
 # ======= W ======= #
-# 微博 可莉
+# 微博
 DOMAIN-SUFFIX,uve.weibo.com,DIRECT,extended-matching
 DOMAIN,huodong.weibo.cn,REJECT,extended-matching,pre-matching
 DOMAIN-SUFFIX,biz.weibo.com,REJECT,extended-matching,pre-matching
+# 网易云音乐
+DOMAIN,httpdns.music.163.com,REJECT,extended-matching,pre-matching
+DOMAIN,httpdns.n.netease.com,REJECT,extended-matching,pre-matching
+DOMAIN,iadmat.nosdn.127.net,REJECT,extended-matching,pre-matching
+DOMAIN,iadmatapk.nosdn.127.net,REJECT,extended-matching,pre-matching
+DOMAIN,iadmusicmat.music.126.net,REJECT,extended-matching,pre-matching
+# DOMAIN, iadmusicmatvideo.music.126.net, REJECT
+DOMAIN-SUFFIX,163jiasu.com,REJECT,extended-matching,pre-matching
 
 # ======= X ======= #
 # 闲鱼
@@ -280,6 +288,13 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? 'delpaths
 http-response-jq ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? 'delpaths([["activity_window"]])'
 http-response-jq ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? 'delpaths([["vip_tip"]])'
 http-response-jq ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "recommend_queries":\{.+\} "recommend_queries":{}
+
+
+[Header Rewrite]
+# 网易云音乐
+# 新版加密通用处理
+http-request ^https?:\/\/interface\d?\.music\.163\.com\/e?api\/(?:batch|v2\/resource\/comment\/floor\/get|homepage\/block\/page|link\/home\/framework\/tab|link\/page\/rcmd\/block\/resource\/multi\/refresh|link\/page\/rcmd\/resource\/show|user\/follow\/users\/mixed\/get) header-replace 'x-aeapi' 'false'
+http-request ^https?:\/\/interface\d?\.music\.163\.com\/w?eapi\/(?:activity\/bonus\/playpage\/time\/query|resource-exposure\/|search\/(?:chart\/|default\/|rcmd\/keyword\/|specialkeyword\/)) header-del 'x-aeapi'
 
 
 [Map Local]
@@ -449,6 +464,20 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "reco
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) data-type=text data="{}" status-code=200
 ^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) data-type=text data="{}" status-code=200
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) data-type=text data="{}" status-code=200
+# 网易云音乐
+# 开屏广告
+^https?:\/\/interface\d?\.music\.163\.com\/e?api\/(ocpc\/)?ad\/ data-type=text data="{}" status-code=200
+^https?:\/\/(ipv4|interface\d?)\.music\.163.com\/e?api\/ad data-type=text data="{}" status-code=200
+# 今日运势 商城 Beat专区 音乐收藏家 | type:ACTIVITY | 低至5.2折
+^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:delivery\/(batch-)?deliver|moment\/tab\/info\/|side-bar\/mini-program\/music-service\/account|yunbei\/account\/entrance\/) data-type=text data="{}" status-code=200
+# 播放页 歌名下方 乐迷团｜关注｜播放页提示｜音乐应用红点｜播放提示
+^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:community\/friends\/fans-group\/artist\/group\/|mine\/applet\/redpoint|music\/songshare\/text\/recommend\/|resniche\/position\/play\/new\/|resource\/comments?\/musiciansaid\/|user\/sub\/artist) data-type=text data="{}" status-code=200
+^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:ios\/version|mlivestream\/entrance\/playpage\/|link\/position\/show\/strategy|link\/scene\/show\/resource|v1\/content\/exposure\/comment\/banner\/) data-type=text data="{}" status-code=200
+# 搜索页 搜索词 热搜卡片 猜你喜欢 我的应用下方提醒
+^https?:\/\/interface\d?\.music\.163\.com\/w?eapi\/(?:activity\/bonus\/playpage\/time\/query|resource-exposure\/|search\/(?:chart\/|default\/|rcmd\/keyword\/|specialkeyword\/)) data-type=text data="{}" status-code=200
+# 主页播客推荐
+^https:\/\/interface\d\.music\.163\.com\/eapi\/my\/podcast\/tab\/recommend data-type=text data="{}" status-code=200
+
 
 # ======= X ======= #
 # 闲鱼
@@ -631,6 +660,19 @@ body_rewrite_18 = type=http-response, pattern=^https:\/\/az2-api-js\.gifshow\.co
 移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
 会员图标 = type=http-response, pattern=^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
+# 网易云音乐
+# 热推、有话想说、分享一下、歌曲下的祝福等小提示、评论区、乐迷、星评等级、关注等图标
+评论区 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:batch|v2\/resource\/comment\/floor\/get), script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
+# 推荐、home、主页
+主页 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/(?:homepage\/block\/page|link\/page\/rcmd\/(?:block\/resource\/multi\/refresh|resource\/show)), script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
+# 底部选项卡
+底部选项卡 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/home\/framework\/tab, script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
+# 发现
+发现页 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/page\/discovery\/resource\/show, script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
+# 我的页面
+我的页面 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/link\/position\/show\/resource, script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
+# 显示未关注你
+显示未关注你的人 = type=http-response, pattern=^https?:\/\/interface\d?\.music\.163\.com\/eapi\/user\/follow\/users\/mixed\/get, script-path=https://kelee.one/Resource/Script/NeteaseCloudMusic/NeteaseCloudMusic_remove_ads.js, requires-body=true, binary-body-mode=true, timeout=20
 
 # ======= X ======= #
 # 闲鱼
@@ -666,4 +708,4 @@ body_rewrite_18 = type=http-response, pattern=^https:\/\/az2-api-js\.gifshow\.co
 
 [MITM]
 h2 = true
-hostname = %APPEND% client.app.coc.10086.cn,mp.weixin.qq.com,webappcfg.paas.cmbchina.com,ad.12306.cn,mobile.12306.cn,spclient.wg.spotify.com,api.m.jd.com,sdk1xyajs.data.kuiniuca.com,tower.ubixioe.com,client.app.coc.10086.cn,htwkop.xiaojukeji.com,ad.maoyan.com,wx.maoyan.com,vod-movie.maoyan.com,api.maoyan.com,acs.m.taobao.com,heic.alicdn.com,guide-acs.m.taobao.com,poplayer.template.alibaba.com,capi.lkcoffee.com,cn-acs.m.cainiao.com,guide-acs.m.taobao.com,video-dsp.pddpic.com,t-dsp.pinduoduo.com,images.pinduoduo.com,app.zhuanzhuan.com,api.coolapk.com,acs.m.goofish.com,g-acs.m.goofish.com,api.alipan.com,member.alipan.com,bizapi.alipan.com,api.douban.com,frodo.douban.com,m.douban.com,acs.m.taobao.com,common.diditaxi.com.cn,freight.xiaojukeji.com,daijia.kuaidadi.com,162.14.157.*,ct.xiaojukeji.com,res.xiaojukeji.com,conf.diditaxi.com.cn,api.udache.com,mcsp.cloudpnr.com,saas-ad.cloudpnr.com,rms.meituan.com,api.pinduoduo.com,api.yangkeduo.com,webcast-open.douyin.com,beta-luna.douyin.com,account.95516.com,base.95516.com,content.95516.com,gslbali.ximalaya.com,search.ximalaya.com,searchwsa.ximalaya.com,mobile.ximalaya.com,mobilehera.ximalaya.com,mobwsa.ximalaya.com,m.ximalaya.com,mwsa.ximalaya.com,*.zhihu.com,weixin110.qq.com,security.wechat.com,m.baidu.com,www.baidu.com,huichuan.sm.cn,stars.shuqireader.com,open-cms-api.quark.cn,api.pipix.com,api5-lq.pipix.com,ap?.bilibili.com,grpc.biliapi.net,www.bilibili.com,m.bilibili.com,*live.bilibili.com,*.weibo.cn,*.weibo.com,weibo.com,az4-api.ksapisrv.com,az4-api-idc.ksapisrv.com,az2-api.ksapisrv.com,az2-api-idc.ksapisrv.com,apissl.gifshow.com,apissl.ksapisrv.com,az2-api-js.gifshow.com,az2-live.ksapisrv.com,rtbapi.douyucdn.cn,apiv2.douyucdn.cn,venus.douyucdn.cn,api.izuiyou.com,gromore.pangolin-sdk-toutiao.com,lf-cdn-tos.bytescm.com,zyfile.izuiyou.com,203.107.1.1,203.107.1.33,203.107.1.66,203.107.1.67,203.107.1.97,a.athm.cn,adproxy.autohome.com.cn,apiautoappusc.che168.com,autoapi.autohome.com.cn,cars.app.autohome.com.cn,clientlive.api.autohome.com.cn,club.app.autohome.com.cn,dealer.m.autohome.com.cn,maam.pingan.com.cn,mobile.app.autohome.com.cn,news.app.autohome.com.cn,pcmx.autohome.com.cn,games.mobileapi.hupu.com,fairy.mobileapi.hupu.com,bbs.mobileapi.hupu.com,goblin.hupu.com
+hostname = %APPEND% client.app.coc.10086.cn,mp.weixin.qq.com,webappcfg.paas.cmbchina.com,ad.12306.cn,mobile.12306.cn,spclient.wg.spotify.com,api.m.jd.com,sdk1xyajs.data.kuiniuca.com,tower.ubixioe.com,client.app.coc.10086.cn,htwkop.xiaojukeji.com,ad.maoyan.com,wx.maoyan.com,vod-movie.maoyan.com,api.maoyan.com,acs.m.taobao.com,heic.alicdn.com,guide-acs.m.taobao.com,poplayer.template.alibaba.com,capi.lkcoffee.com,cn-acs.m.cainiao.com,guide-acs.m.taobao.com,video-dsp.pddpic.com,t-dsp.pinduoduo.com,images.pinduoduo.com,app.zhuanzhuan.com,api.coolapk.com,acs.m.goofish.com,g-acs.m.goofish.com,api.alipan.com,member.alipan.com,bizapi.alipan.com,api.douban.com,frodo.douban.com,m.douban.com,acs.m.taobao.com,common.diditaxi.com.cn,freight.xiaojukeji.com,daijia.kuaidadi.com,162.14.157.*,ct.xiaojukeji.com,res.xiaojukeji.com,conf.diditaxi.com.cn,api.udache.com,mcsp.cloudpnr.com,saas-ad.cloudpnr.com,rms.meituan.com,api.pinduoduo.com,api.yangkeduo.com,webcast-open.douyin.com,beta-luna.douyin.com,account.95516.com,base.95516.com,content.95516.com,gslbali.ximalaya.com,search.ximalaya.com,searchwsa.ximalaya.com,mobile.ximalaya.com,mobilehera.ximalaya.com,mobwsa.ximalaya.com,m.ximalaya.com,mwsa.ximalaya.com,*.zhihu.com,weixin110.qq.com,security.wechat.com,m.baidu.com,www.baidu.com,huichuan.sm.cn,stars.shuqireader.com,open-cms-api.quark.cn,api.pipix.com,api5-lq.pipix.com,ap?.bilibili.com,grpc.biliapi.net,www.bilibili.com,m.bilibili.com,*live.bilibili.com,*.weibo.cn,*.weibo.com,weibo.com,az4-api.ksapisrv.com,az4-api-idc.ksapisrv.com,az2-api.ksapisrv.com,az2-api-idc.ksapisrv.com,apissl.gifshow.com,apissl.ksapisrv.com,az2-api-js.gifshow.com,az2-live.ksapisrv.com,rtbapi.douyucdn.cn,apiv2.douyucdn.cn,venus.douyucdn.cn,api.izuiyou.com,gromore.pangolin-sdk-toutiao.com,lf-cdn-tos.bytescm.com,zyfile.izuiyou.com,203.107.1.1,203.107.1.33,203.107.1.66,203.107.1.67,203.107.1.97,a.athm.cn,adproxy.autohome.com.cn,apiautoappusc.che168.com,autoapi.autohome.com.cn,cars.app.autohome.com.cn,clientlive.api.autohome.com.cn,club.app.autohome.com.cn,dealer.m.autohome.com.cn,maam.pingan.com.cn,mobile.app.autohome.com.cn,news.app.autohome.com.cn,pcmx.autohome.com.cn,games.mobileapi.hupu.com,fairy.mobileapi.hupu.com,bbs.mobileapi.hupu.com,goblin.hupu.com,interface*.music.163.com
