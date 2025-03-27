@@ -1,6 +1,6 @@
-# NAME: 数独去广告
+# NAME: 数独&Solitaire去广告
 
-
+#数独
 DOMAIN-SUFFIX,togothermany.cn
 DOMAIN-SUFFIX,sigmob.cn
 DOMAIN-SUFFIX,open.e.kuaishou.cn
@@ -14,3 +14,5 @@ DOMAIN-SUFFIX,beizi.biz
 DOMAIN-SUFFIX,magicacid.cn
 DOMAIN-SUFFIX,im-x.jd.com
 DOMAIN-SUFFIX,dsp-x.jd.com
+
+#Solitaire
