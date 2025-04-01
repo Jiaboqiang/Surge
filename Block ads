@@ -246,6 +246,7 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 ^https?:\/\/2401:b180:2000:30::1c\/\d+\/d - reject
 ^https?:\/\/2401:b180:2000:20::10\/\d+\/d - reject
 
+
 [Body Rewrite]
 # ======= K ======= #
 # 快手
@@ -375,6 +376,7 @@ http-response ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "recomme
 ^https?:\/\/api\.izuiyou\.com\/config\/get_banner data-type=text data="{}" status-code=200
 ^https:\/\/zyfile\.izuiyou\.com\/zyfile\/c2\/a0\/[a-z0-9-]+\.json data-type=text data="{}" status-code=200
 
+
 [Script]
 # ======= 0 ======= #
 # 12306
@@ -435,4 +437,4 @@ http-response ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "recomme
 
 [MITM]
 h2 = true
-hostname = %APPEND% ad.12306.cn, mobile.12306.cn, m.baidu.com, www.baidu.com, api.m.jd.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, weixin110.qq.com, security.wechat.com, gslbali.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, m.ximalaya.com, mwsa.ximalaya.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com, *.zhihu.com, api.izuiyou.com, gromore.pangolin-sdk-toutiao.com, lf-cdn-tos.bytescm.com, zyfile.izuiyou.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97
+hostname = %APPEND% ad.12306.cn, mobile.12306.cn, m.baidu.com, www.baidu.com, api.m.jd.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, weixin110.qq.com, security.wechat.com, gslbali.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, m.ximalaya.com, mwsa.ximalaya.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com, *.zhihu.com, api.izuiyou.com, gromore.pangolin-sdk-toutiao.com, lf-cdn-tos.bytescm.com, zyfile.izuiyou.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api-access.pangolin-sdk-toutiao*.com 
