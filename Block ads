@@ -5,7 +5,7 @@
 #!tag = 广告拦截
 #!date = 2025-04-03
 #!包含 = 12306 百度网页 京东 快手 拼多多 微博 微信外部链接解锁 喜马拉雅 知乎 最右
-#!日期 = 12306 2024-11-28  百度网页 2024-11-28  京东 2024-12-29  快手 2025-03-07  拼多多 2024-11-28  微博 2025-02-28  微信外部链接解锁 2024-11-28  喜马拉雅 2025-03-26  知乎 2024-11-28  最右 2024-11-28
+#!日期 = 12306 2024-11-28 百度网页 2024-11-28 京东 2024-12-29 快手 2025-03-07 拼多多 2024-11-28 微博 2025-02-28 微信外部链接解锁 2024-11-28 喜马拉雅 2025-03-26 知乎 2024-11-28 最右 2024-11-28
 
 
 [Rule]
@@ -437,4 +437,4 @@ http-response ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "recomme
 
 [MITM]
 h2 = true
-hostname = %APPEND% ad.12306.cn, mobile.12306.cn, m.baidu.com, www.baidu.com, api.m.jd.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, api.pinduoduo.com, api.yangkeduo.com, *.weibo.cn, *.weibo.com, weibo.com, weixin110.qq.com, security.wechat.com, gslbali.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, m.ximalaya.com, mwsa.ximalaya.com, video-dsp.pddpic.com, t-dsp.pinduoduo.com, images.pinduoduo.com, *.zhihu.com, api.izuiyou.com, gromore.pangolin-sdk-toutiao.com, lf-cdn-tos.bytescm.com, zyfile.izuiyou.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api-access.pangolin-sdk-toutiao*.com 
+hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, ad.12306.cn, api.izuiyou.com, api.m.jd.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.12306.cn, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, security.wechat.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, weixin110.qq.com, www.baidu.com, zyfile.izuiyou.com
