@@ -1,11 +1,11 @@
 #!name = Block ads | 自用广告拦截合集
-#!desc = 名称： 自用广告拦截合集 \n作者： RuCu6 Keywos fmz200 可莉🅥 QingRex Xream 茉莉 \n说明： 自用广告拦截合集 \n时间： 2025-04-03
+#!desc = 名称： 自用广告拦截合集 \n作者： RuCu6 Keywos fmz200 可莉🅥 QingRex 茉莉 \n说明： 自用广告拦截合集 \n时间： 2025-04-04
 #!author = RuCu6 Keywos fmz200 可莉🅥 QingRex Xream 茉莉
 #!category = 🚫Block ads
 #!tag = 广告拦截
-#!date = 2025-04-03
+#!date = 2025-04-04
 #!包含 = 12306 百度网页 京东 快手 拼多多 微博 微信外部链接解锁 喜马拉雅 知乎 最右
-#!日期 = 12306 2024-11-28 百度网页 2024-11-28 京东 2024-12-29 快手 2025-03-07 拼多多 2024-11-28 微博 2025-02-28 微信外部链接解锁 2024-11-28 喜马拉雅 2025-03-26 知乎 2024-11-28 最右 2024-11-28
+#!日期 = 12306 2024-11-28 百度网页 2024-11-28 京东 2024-12-29 快手 2025-03-07 拼多多 2024-11-28 微博 2025-02-28 微信外部链接解锁 2024-11-28 喜马拉雅 2025-03-26 知乎 2025-04-04 最右 2024-11-28
 
 
 [Rule]
@@ -233,7 +233,7 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 # 知乎
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
 ^https:\/\/www\.zhihu\.com\/appview\/v3\/zhmore - reject
-^https:\/\/link\.zhihu\.com\/\?target=(?:https?)?(?:%3A|:)?(?:\/\/|%2F%2F)?(.*) http://$1 307
+^https:\/\/link\.zhihu\.com\/\?target=(?:https?)?(?:%3A|:)?(?:\/\/|%2F%2F)?(.*) http://$1 302
 # 最右
 ^https?:\/\/api\.izuiyou\.com\/ad\/ - reject
 ^https:\/\/gromore\.pangolin-sdk-toutiao\.com\/api\/ad\/ - reject
@@ -286,6 +286,7 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? 'delpaths
 http-response-jq ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? 'delpaths([["activity_window"]])'
 http-response-jq ^https:\/\/api\.zhihu\.com\/bazaar\/vip_tab\/header\? 'delpaths([["vip_tip"]])'
 http-response ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "recommend_queries":\{.+\} "recommend_queries":{}
+http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|\?include=) 'del(.ad_info, .data[].ad_info, .query_info) | if (.data | type) == "array" then .data |= map(select(.target?.answer_type?// "" | tostring | contains("paid") | not)) else . end'
 
 
 [Map Local]
@@ -429,7 +430,6 @@ http-response ^https:\/\/api\.zhihu\.com\/search\/recommend_query\/v2\? "recomme
 精简顶部标签 = type=http-response, pattern=^https:\/\/api\.zhihu\.com\/root\/tab, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
 移除热榜信息流推广 = type=http-response, pattern=^https:\/\/api\.zhihu\.com\/v2\/topstory\/hot-lists\/everyone-seeing\?, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
 移除下一个回答推广、评论区顶部推广 = type=http-response, pattern=^https:\/\/api\.zhihu\.com\/next-(?:bff|data|render), script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
-移除回答详情页推广 = type=http-response, pattern=^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|\?include=), script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
 移除回答详情页推广 = type=http-response, pattern=^https:\/\/www\.zhihu\.com\/api\/v4\/(?:articles|answers)\/\d+\/recommendations?\?, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
 拦截服务器推送配置 config = type=http-response, pattern=^https:\/\/appcloud2\.zhihu\.com\/v3\/config, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
 拦截服务器推送配置 config all = type=http-response, pattern=^https:\/\/m-cloud\.zhihu\.com\/api\/cloud\/zhihu\/config\/all\?, script-path=https://kelee.one/Resource/Script/Zhihu/Zhihu_remove_ads.js, requires-body=true
