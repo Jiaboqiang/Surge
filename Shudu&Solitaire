@@ -1,21 +1,12 @@
 # NAME: 数独&Solitaire去广告
 
 #数独
-DOMAIN-SUFFIX,togothermany.cn
-DOMAIN-SUFFIX,sigmob.cn
-DOMAIN-SUFFIX,open.e.kuaishou.cn
-DOMAIN-SUFFIX,etoolads.cn
-DOMAIN-SUFFIX,img-x.jd.com
-DOMAIN-SUFFIX,qh-material.taobao.com
-DOMAIN-SUFFIX,unitychina.cn
-DOMAIN-SUFFIX,janapi.jd.com
-DOMAIN-SUFFIX,xlog.jd.com
+DOMAIN,adservice.sigmob.cn
+DOMAIN,dm.magicacid.cn
+DOMAIN,m.magicacid.cn
+DOMAIN,open.e.kuaishou.cn
 DOMAIN-SUFFIX,beizi.biz
-DOMAIN-SUFFIX,magicacid.cn
-DOMAIN-SUFFIX,im-x.jd.com
-DOMAIN-SUFFIX,dsp-x.jd.com
-DOMAIN-SUFFIX,snowflake.qq.com
-DOMAIN-SUFFIX,hmored.cn
+
 
 #Solitaire
 DOMAIN-SUFFIX,ads.vungle.com
