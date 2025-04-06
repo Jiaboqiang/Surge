@@ -1,12 +1,10 @@
 # NAME: 数独&Solitaire去广告
 
 #数独
-DOMAIN,adservice.sigmob.cn
-DOMAIN,dm.magicacid.cn
-DOMAIN,m.magicacid.cn
 DOMAIN,open.e.kuaishou.cn
 DOMAIN-SUFFIX,beizi.biz
-
+DOMAIN-SUFFIX,magicacid.cn
+DOMAIN-SUFFIX,sigmob.cn
 
 #Solitaire
 DOMAIN-SUFFIX,applovin.com
