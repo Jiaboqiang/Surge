@@ -418,8 +418,6 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 移除开屏广告 = type=http-response, pattern=^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
 移除开屏广告 = type=http-response, pattern=^https:\/\/wbapp\.uve\.weibo\.com\/(?:preload\/get_ad|wbapplua\/wbpullad\.lua), script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
 会员图标 = type=http-response, pattern=^https:\/\/new\.vip\.weibo\.cn\/aj\/appicon\/list\?, script-path=https://kelee.one/Resource/Script/Weibo/Weibo_remove_ads.js, requires-body=true
-# 微信外部链接解锁
-微信外部链接解锁 = type=http-response, pattern=^https\:\/\/(weixin110\.qq|security.wechat)\.com\/cgi-bin\/mmspamsupport-bin\/newredirectconfirmcgi\?, script-path=https://kelee.one/Resource/Script/Weixin/Weixin_external_links_unlock.js, requires-body=true
 
 # ======= Z ======= #
 # 知乎
@@ -437,4 +435,4 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 
 [MITM]
 h2 = true
-hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, ad.12306.cn, api.izuiyou.com, api.m.jd.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.12306.cn, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, security.wechat.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, weixin110.qq.com, www.baidu.com, zyfile.izuiyou.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, ad.12306.cn, api.izuiyou.com, api.m.jd.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.12306.cn, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, www.baidu.com, zyfile.izuiyou.com
