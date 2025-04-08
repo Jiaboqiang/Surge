@@ -4,8 +4,8 @@
 #!category = 🚫Block ads
 #!tag = 广告拦截
 #!date = 2025-04-09
-#!包含 = 百度网页 拼多多 微博 喜马拉雅 知乎 最右
-#!日期 = 百度网页 2024-11-28 拼多多 2024-11-28 微博 2025-02-28 喜马拉雅 2025-03-26 知乎 2025-04-04 最右 2024-11-28
+#!包含 = 百度网页 拼多多 微博 知乎 最右
+#!日期 = 百度网页 2024-11-28 拼多多 2024-11-28 微博 2025-02-28 知乎 2025-04-04 最右 2024-11-28
 
 
 [Rule]
@@ -25,146 +25,6 @@ DOMAIN,th.pinduoduo.com,REJECT
 DOMAIN-SUFFIX,uve.weibo.com,DIRECT
 DOMAIN,huodong.weibo.cn,REJECT
 DOMAIN-SUFFIX,biz.weibo.com,REJECT
-
-# ======= X ======= #
-# 喜马拉雅
-DOMAIN,adse.ximalaya.com,REJECT
-DOMAIN,adsehera.ximalaya.com,REJECT
-DOMAIN,adse.wsa.ximalaya.com,REJECT
-DOMAIN,adbehavior.ximalaya.com,REJECT
-DOMAIN,adbehavior.wsa.ximalaya.com,REJECT
-DOMAIN,dns2.q2cdn.com,REJECT
-URL-REGEX,"^http:\/\/xmc\.ximalaya\.com\/xmlymain-login-web\/login\/",REJECT
-AND,((DOMAIN-KEYWORD,-ad-),(DOMAIN-SUFFIX,byteimg.com)),REJECT
-AND,((DOMAIN-KEYWORD,-ttam-),(DOMAIN-SUFFIX,ibyteimg.com)),REJECT
-AND,((DOMAIN-KEYWORD,ssdk-),(DOMAIN-SUFFIX,pangle.io)),REJECT
-AND,((DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com)),REJECT
-AND,((DOMAIN-KEYWORD,lf),(DOMAIN-KEYWORD,-short.bytetos.com)),REJECT
-AND,((DOMAIN-KEYWORD,v),(DOMAIN-KEYWORD,-be-pack.pglstatp-toutiao.com)),REJECT
-AND,((DOMAIN-KEYWORD,sf),(DOMAIN-KEYWORD,-be-pack.pglstatp-toutiao.com)),REJECT
-AND,((DOMAIN-KEYWORD,s),(DOMAIN-KEYWORD,-fe-scm.pglstatp-toutiao.com)),REJECT
-AND,((DOMAIN-KEYWORD,sf),(DOMAIN-KEYWORD,-ttcdn-tos.pstatp.com)),REJECT
-AND,((DOMAIN-KEYWORD,sf),(DOMAIN-KEYWORD,-fe-tos.pglstatp-toutiao.com)),REJECT
-AND,((DOMAIN-KEYWORD,sf),(DOMAIN-KEYWORD,-static.i18n-pglstatp.com)),REJECT
-AND,((DOMAIN-KEYWORD,if),(DOMAIN-KEYWORD,-cdn-tos.bytescm.com)),REJECT
-AND,((DOMAIN-KEYWORD,if),(DOMAIN-KEYWORD,-analytics.bytescm.com)),REJECT
-AND,((DOMAIN-KEYWORD,lf),(DOMAIN-KEYWORD,-analytics.bytescm.com)),REJECT
-AND,((DOMAIN-KEYWORD,lf),(DOMAIN-KEYWORD,-analytics.bytescm.com)),REJECT
-AND,((DOMAIN-KEYWORD,ads),(DOMAIN-KEYWORD,normal),(DOMAIN-SUFFIX,zijieapi.com)),REJECT
-AND,((DOMAIN-KEYWORD,api),(DOMAIN-KEYWORD,-access-),(DOMAIN-SUFFIX,pangle.io)),REJECT
-AND,((DOMAIN-KEYWORD,api),(DOMAIN-KEYWORD,-log-),(DOMAIN-SUFFIX,pangle.io)),REJECT
-AND,((DOMAIN-KEYWORD,api),(DOMAIN-KEYWORD,-dual-event-),(DOMAIN-SUFFIX,pangle.io)),REJECT
-AND,((DOMAIN-KEYWORD,api),(DOMAIN-KEYWORD,pangolin),(DOMAIN-SUFFIX,sgsnssdk.com)),REJECT
-AND,((DOMAIN-KEYWORD,ads),(DOMAIN-KEYWORD,-normal-lq),(DOMAIN-SUFFIX,zijieapi.com)),REJECT
-URL-REGEX,"^http:\/\/p\d+-be-pack-sign\.pglstatp-toutiao\.com\/(ad-app-package|web\.business\.image)\/",REJECT
-DOMAIN,mon.zijieapi.com,REJECT
-DOMAIN,lf-ad-ies.bytecdn.cn,REJECT
-DOMAIN,i.snssdk.com,REJECT
-DOMAIN,is.snssdk.com,REJECT
-DOMAIN,bds.snssdk.com,REJECT
-DOMAIN,dm.bytedance.com,REJECT
-DOMAIN,dm.pstatp.com,REJECT
-DOMAIN,dm.toutiao.com,REJECT
-DOMAIN,log.snssdk.com,REJECT
-DOMAIN,s3a.pstatp.com,REJECT
-DOMAIN,sdfp.snssdk.com,REJECT
-DOMAIN,tosv.boe.byted.org,REJECT
-DOMAIN,tosv.byted.org,REJECT
-DOMAIN,extlog.snssdk.com,REJECT
-DOMAIN,mssdk-bu.bytedance.com,REJECT
-DOMAIN,toblog.ctobsnssdk.com,REJECT
-DOMAIN,mssdk.volces.com,REJECT
-DOMAIN,pangolin.snssdk.com,REJECT
-DOMAIN,gromore.pangolin-sdk-toutiao.com,REJECT
-DOMAIN,ether-pack.pangolin-sdk-toutiao.com,REJECT
-DOMAIN-KEYWORD,-ad-sign.byteimg.com,REJECT
-DOMAIN-KEYWORD,api-access.pangolin-sdk-toutiao,REJECT
-DOMAIN-KEYWORD,log-api.pangolin-sdk-toutiao,REJECT
-DOMAIN-KEYWORD,-ad.byteoversea.com,REJECT
-DOMAIN-KEYWORD,video-cn.snssdk.com,REJECT
-DOMAIN-KEYWORD,asiad.byteactivity,REJECT
-DOMAIN,cnlogs.umeng.com,REJECT
-DOMAIN,errlog.umeng.com,REJECT
-DOMAIN,errnewlog.umeng.com,REJECT
-DOMAIN,ucc.umeng.com,REJECT
-DOMAIN,ulogs.umeng.com,REJECT
-DOMAIN,utoken.umeng.com,REJECT
-DOMAIN,deeplink.umeng.com,REJECT
-DOMAIN,aspect-upush.umeng.com,REJECT
-DOMAIN,plbslog.umeng.com,REJECT
-DOMAIN,log.umtrack.com,REJECT
-DOMAIN,aaid.umeng.com,REJECT
-DOMAIN,log.umsns.com,REJECT
-DOMAIN,b-gtc.getui.net,REJECT
-DOMAIN,c-gtc.getui.net,REJECT
-DOMAIN,c-hzgt2.getui.com,REJECT
-DOMAIN,c-ido.getui.net,REJECT
-DOMAIN,c-gtc.getui.net,REJECT
-DOMAIN,dnms.getui.com,REJECT
-DOMAIN,ido.getui.net,REJECT
-DOMAIN,sdk-conf.getui.com,REJECT
-DOMAIN,sdk-open-phone.getui.com,REJECT
-DOMAIN,ido.gepush.com,REJECT
-DOMAIN-SUFFIX,mobileservice.cn,REJECT
-DOMAIN-SUFFIX,getui.com,REJECT
-DOMAIN-SUFFIX,igexin.com,REJECT
-DOMAIN,ali-stats.jpush.cn,REJECT
-DOMAIN,ce3e75d5.jpush.cn,REJECT
-DOMAIN,config-junion.jpush.cn,REJECT
-DOMAIN,config.jpush.cn,REJECT
-DOMAIN,fcapi-ipv6.jpush.cn,REJECT
-DOMAIN,gd-stats.jpush.cn,REJECT
-DOMAIN,s.jpush.cn,REJECT
-DOMAIN,sdk.verification.jiguang.cn,REJECT
-DOMAIN,sis-ipv6.jpush.cn,REJECT
-DOMAIN,smartop-sdkapi.jiguang.cn,REJECT
-DOMAIN,status-ipv6.jpush.cn,REJECT
-DOMAIN,tsis.jpush.cn,REJECT
-DOMAIN,user.jpush.cn,REJECT
-DOMAIN-SUFFIX,jiguang.cn,REJECT
-DOMAIN-SUFFIX,jpush.cn,REJECT
-DOMAIN-SUFFIX,jpush.io,REJECT
-DOMAIN,adsmind.gdtimg.com,REJECT
-DOMAIN,adsmind.ugdtimg.com,REJECT
-DOMAIN,c2.gdt.qq.com,REJECT
-DOMAIN,huatuocode.huatuo.qq.com,REJECT
-DOMAIN,info4.video.qq.com,REJECT
-DOMAIN,info6.video.qq.com,REJECT
-DOMAIN,ios.bugly.qq.com,REJECT
-DOMAIN,pro.bugly.qq.com,REJECT
-DOMAIN,ios.video.mpush.qq.com,REJECT
-DOMAIN,mi.gdt.qq.com,REJECT
-DOMAIN,otheve.beacon.qq.com,REJECT
-DOMAIN,pgdt.gtimg.cn,REJECT
-DOMAIN,pgdt.ugdtimg.com,REJECT
-DOMAIN,qzs.gdtimg.com,REJECT
-DOMAIN,qzs.qq.com,REJECT
-DOMAIN,rmonitor.qq.com,REJECT
-DOMAIN,sdk.e.qq.com,REJECT
-DOMAIN,sdkconfig.video.qq.com,REJECT
-DOMAIN,t.gdt.qq.com,REJECT
-DOMAIN,tmead.y.qq.com,REJECT
-DOMAIN,tmeadbak.y.qq.com,REJECT
-DOMAIN,tmeadcomm.y.qq.com,REJECT
-DOMAIN,tpns.qq.com,REJECT
-DOMAIN,v.gdt.qq.com,REJECT
-DOMAIN,v2.gdt.qq.com,REJECT
-DOMAIN,win.gdt.qq.com,REJECT
-DOMAIN,wup.imtt.qq.com,REJECT
-DOMAIN,tpstelemetry.tencent.com,REJECT
-DOMAIN,ii.gdt.qq.com,REJECT
-DOMAIN-KEYWORD,trace.qq.com,REJECT
-DOMAIN-KEYWORD,trace.video.qq.com,REJECT
-DOMAIN-SUFFIX,gdt.qq.com,REJECT
-DOMAIN-SUFFIX,l.qq.com,REJECT
-DOMAIN-SUFFIX,ugdtimg.com,REJECT
-IP-CIDR,47.110.187.87/32,REJECT,no-resolve
-DOMAIN,e-u1.ubixioe.com,REJECT
-DOMAIN,sdk-data.ubixioe.com,REJECT
-DOMAIN,tower.ubixioe.com,REJECT
-DOMAIN,tx-cfg-u1.ubixioe.com,REJECT
-DOMAIN,tx-data-u1.ubixioe.com,REJECT
-DOMAIN,adx.halomobi.com,REJECT
 
 # ======= Z ======= #
 # 知乎
@@ -210,14 +70,6 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 
 
 [URL Rewrite]
-# ======= X ======= #
-# 喜马拉雅
-^https:\/\/gslbali\.ximalaya\.com\/linkeye-cloud\/httpdns\/ - reject
-^https:\/\/video-dsp\.pddpic\.com\/market-dsp-video\/ - reject
-^https:\/\/t-dsp\.pinduoduo\.com\/dspcb\/i\/mrk_union - reject
-^https:\/\/images\.pinduoduo\.com\/mrk\/ - reject
-^https:\/\/images\.pinduoduo\.com\/marketing_api\/ - reject
-
 # ======= Z ======= #
 # 知乎
 ^https:\/\/api\.zhihu\.com\/unlimited\/go\/my_card - reject
@@ -248,16 +100,6 @@ http-response-jq ^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub\? 'de
 http-response-jq ^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub\? 'delpaths([["icon_set","top_personal_icons"]])'
 http-response-jq ^https:\/\/api\.pinduoduo\.com\/api\/philo\/personal\/hub\? 'delpaths([["title_bar_items"]])'
 http-response-jq ^https:\/\/api\.pinduoduo\.com\/search 'delpaths([["expansion"]])'
-
-# ======= X ======= #
-# 喜马拉雅
-http-response-jq ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/discovery-feed\/v\d\/mix\/ '.heData |= map(select(.item.list[].bizType != "SceneListenCard"))'
-http-response-jq ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/discovery-category\/customCategories\/ '.categoryList |= map(.itemList |= map(select(.title | test("直播|123狂欢节|SVIP"; "i") | not))) | .customCategoryList |= map(select(.title | test("直播|123狂欢节|SVIP"; "i") | not))'
-http-response-jq ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/football-portal\/diff2\/batch\? 'delpaths([["json","ad"]])'
-http-response-jq ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/football-portal\/diff2\/batch\? 'delpaths([["json","toc"]])'
-http-response-jq ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/nexus-web\/v\d\/tabs\/customTabs\? '.data.feedTabs |= map(select(.name != "大赛"))'
-http-response-jq ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-user\/v\d\/homePage\/ 'delpaths([["data","freeListenV2"]])'
-http-response-jq ^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-user\/v\d\/homePage\/ '.data.serviceModule.entrances |= map(select(.name == "全部服务"))'
 
 # ======= Z ======= #
 # 知乎
@@ -301,24 +143,6 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 ^https:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/(?:get-lbs-cell-info\.php|sdkconfig\.php) data-type=text data="{}" status-code=200
 ^https:\/\/card\.weibo\.com\/article\/m\/aj\/(?:reward|uvead) data-type=text data="{}" status-code=200
 ^https:\/\/weibo\.com\/ttarticle\/x\/m\/aj\/(?:reward|uvead) data-type=text data="{}" status-code=200
-
-# ======= X ======= #
-# 喜马拉雅
-^https:\/\/(search|searchwsa)\.ximalaya\.com\/hub\/(guideWord|hotWord)V\d\/ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/discovery-feed\/v\d\/scene\/listen\/refresh\? data-type=text data="{}" status-code=200
-^https:\/\/(m|mwsa)\.ximalaya\.com\/x-web-activity\/signIn\/getHomePageSignInInfo\/ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/subscribe\/v\d\/subscribe\/tagAlbumList$ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/track-feed\/v\d\/chase\/recommend\/ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/social-web\/follow-stream\/category\/\d+$ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-playpage\/playpage\/recommendContentV\d\/ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-playpage\/playpage\/recommend\/resource\/allocation\/ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/firework-portal\/v\d+\/sync\? data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/business-sale-promotion-guide-mobile-web\/popup\/ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/app-skin-service\/skin\/setting\/info\/ data-type=text data="{}" status-code=200
-^https:\/\/(live|livewsa)\.ximalaya\.com\/lamia\/v1\/subscribe\/status$ data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/subscribe\/v\d\/subscribe\/recommend\? data-type=text data="{}" status-code=200
-^https:\/\/(mobile|mobilehera|mobwsa)\.ximalaya\.com\/mobile-user\/v\d\/purchased\/recommend\/ data-type=text data="{}" status-code=200
-^https:\/\/(m|mwsa)\.ximalaya\.com\/community\/square\/v\d\/stream\? data-type=text data="{"data":{"cards":[{"content":{},"type":"RECOMMENDS"}]},"ret":0}" status-code=200 header="Content-Type:text/json"
 
 # ======= Z ======= #
 # 知乎
@@ -396,4 +220,4 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 
 [MITM]
 h2 = true
-hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api.izuiyou.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, www.baidu.com, zyfile.izuiyou.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api.izuiyou.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, gromore.pangolin-sdk-toutiao.com, lf-cdn-tos.bytescm.com, m.baidu.com, weibo.com, www.baidu.com, zyfile.izuiyou.com
