@@ -4,8 +4,8 @@
 #!category = 🚫Block ads
 #!tag = 广告拦截
 #!date = 2025-04-09
-#!包含 = 百度网页 快手 拼多多 微博 喜马拉雅 知乎 最右
-#!日期 = 百度网页 2024-11-28 快手 2025-03-07 拼多多 2024-11-28 微博 2025-02-28 喜马拉雅 2025-03-26 知乎 2025-04-04 最右 2024-11-28
+#!包含 = 百度网页 拼多多 微博 喜马拉雅 知乎 最右
+#!日期 = 百度网页 2024-11-28 拼多多 2024-11-28 微博 2025-02-28 喜马拉雅 2025-03-26 知乎 2025-04-04 最右 2024-11-28
 
 
 [Rule]
@@ -237,16 +237,6 @@ DOMAIN-KEYWORD,pangolin-sdk-toutiao,DIRECT
 
 
 [Body Rewrite]
-# ======= K ======= #
-# 快手
-http-response-jq ^https:\/\/(apissl|az2-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? 'delpaths([["reskinConfig"]])'
-http-response-jq ^https:\/\/(apissl|az2-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? 'delpaths([["sidebarExSquareStyle","moreList"]])'
-http-response-jq ^https:\/\/(apissl|az2-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? 'delpaths([["sidebarExSquareStyle","topList"]])'
-http-response-jq ^https:\/\/(apissl|az2-api(-js|-idc)?)\.(gifshow|ksapisrv)\.com\/rest\/system\/startup\? '.sidebarExSquareStyle.commonlyUsedList |= map(select(.title == "设置" or .title == "历史记录" or .title == "草稿箱" or .title == "我的钱包" or .title == "小程序" or .title == "未成年人模式" or .title == "官方客服" or .title == "内容偏好" or .title == "离线模式" or .title == "稍后再看" or .title == "举报中心" or .title == "挂件"))'
-http-response-jq ^https:\/\/az2-live\.ksapisrv\.com\/rest\/n\/live\/feed\/square\/refresh\? 'delpaths([["data","banners"]])'
-http-response-jq ^https:\/\/az4-api(-idc)?\.ksapisrv\.com\/rest\/n\/feed\/selectionFast\? 'if (.feeds | type) == "array" then .feeds |= map(select(.ad | not)) else . end'
-http-response-jq ^https:\/\/az2-api-js\.gifshow\.com\/rest\/n\/user\/profile\/v2\? 'delpaths([["postRecommends"]])'
-
 # ======= P ======= #
 # 拼多多
 http-response-jq ^https:\/\/api\.pinduoduo\.com\/api\/oak\/integration\/render 'delpaths([["bottom_section_list"]])'
@@ -279,11 +269,6 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 
 
 [Map Local]
-# ======= k ======= #
-# 快手
-^https:\/\/az2-api\.ksapisrv\.com\/rest\/n\/taskCenter\/task\/report\? data-type=text data="{}" status-code=200
-^https:\/\/az2-api\.ksapisrv\.com\/rest\/n\/ad\/ data-type=text data="{}" status-code=200
-
 # ======= P ======= #
 # 拼多多
 ^https:\/\/api\.(?:pinduoduo|yangkeduo)\.com\/api\/cappuccino\/splash\? data-type=text data="{}" status-code=200
@@ -411,4 +396,4 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 
 [MITM]
 h2 = true
-hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api.izuiyou.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, www.baidu.com, zyfile.izuiyou.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api.izuiyou.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, www.baidu.com, zyfile.izuiyou.com
