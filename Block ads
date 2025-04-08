@@ -4,18 +4,11 @@
 #!category = 🚫Block ads
 #!tag = 广告拦截
 #!date = 2025-04-09
-#!包含 = 百度网页 京东 快手 拼多多 微博 喜马拉雅 知乎 最右
-#!日期 = 百度网页 2024-11-28 京东 2024-12-29 快手 2025-03-07 拼多多 2024-11-28 微博 2025-02-28 喜马拉雅 2025-03-26 知乎 2025-04-04 最右 2024-11-28
+#!包含 = 百度网页 快手 拼多多 微博 喜马拉雅 知乎 最右
+#!日期 = 百度网页 2024-11-28 快手 2025-03-07 拼多多 2024-11-28 微博 2025-02-28 喜马拉雅 2025-03-26 知乎 2025-04-04 最右 2024-11-28
 
 
 [Rule]
-# ======= J ======= #
-# 京东
-DOMAIN,dns.jd.com,REJECT
-URL-REGEX,"^http:\/\/\w{32}\.jddebug\.com\/diagnose\?",REJECT
-IP-CIDR,101.124.19.122/32,REJECT,no-resolve
-IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
-
 # ======= P ======= #
 # 拼多多
 AND,((URL-REGEX,"^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/d"),(USER-AGENT,"*com.xunmeng.pinduoduo*")),REJECT
@@ -286,10 +279,6 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 
 
 [Map Local]
-# ======= J ======= #
-# 京东
-^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(searchBoxWord|stationPullService|uniformRecommend[06]) data-type=text data="{}" status-code=200
-
 # ======= k ======= #
 # 快手
 ^https:\/\/az2-api\.ksapisrv\.com\/rest\/n\/taskCenter\/task\/report\? data-type=text data="{}" status-code=200
@@ -379,10 +368,6 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 # 百度网页
 移除百度搜索首页信息流广告 = type=http-response, pattern="^https?:\/\/(www|m)\.baidu\.com\/?($|\?from=\w{8,9})", script-path=https://kelee.one/Resource/Script/BaiduSearch/BaiduSearchHomePage_remove_ads.js, requires-body=true
 
-# ======= J ======= #
-# 京东
-移除京东广告 = type=http-response, pattern=^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=(deliverLayer|getTabHomeInfo|myOrderInfo|orderTrackBusiness|personinfoBusiness|start|welcomeHome), script-path=https://kelee.one/Resource/Script/JD/JD_remove_ads.js, requires-body=true
-
 # ======= P ======= #
 # 拼多多
 精简首页 = type=http-response, pattern=^https:\/\/api\.pinduoduo\.com\/api\/alexa\/homepage\/hub\?, script-path=https://kelee.one/Resource/Script/PinDuoDuo/PinDuoDuo_remove_ads.js, requires-body=true
@@ -426,4 +411,4 @@ http-response-jq ^https:\/\/api\.zhihu\.com\/questions\/\d+(?:\/answers|\/feeds|
 
 [MITM]
 h2 = true
-hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api.izuiyou.com, api.m.jd.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, www.baidu.com, zyfile.izuiyou.com
+hostname = %APPEND% *.weibo.cn, *.weibo.com, *.zhihu.com, 203.107.1.1, 203.107.1.33, 203.107.1.66, 203.107.1.67, 203.107.1.97, api.izuiyou.com, api.pinduoduo.com, api.yangkeduo.com, api-access.pangolin-sdk-toutiao*.com, apissl.gifshow.com, apissl.ksapisrv.com, az2-api.ksapisrv.com, az2-api-idc.ksapisrv.com, az2-api-js.gifshow.com, az2-live.ksapisrv.com, az4-api.ksapisrv.com, az4-api-idc.ksapisrv.com, gromore.pangolin-sdk-toutiao.com, gslbali.ximalaya.com, images.pinduoduo.com, lf-cdn-tos.bytescm.com, m.baidu.com, m.ximalaya.com, mobile.ximalaya.com, mobilehera.ximalaya.com, mobwsa.ximalaya.com, mwsa.ximalaya.com, search.ximalaya.com, searchwsa.ximalaya.com, t-dsp.pinduoduo.com, video-dsp.pddpic.com, weibo.com, www.baidu.com, zyfile.izuiyou.com
