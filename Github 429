@@ -7,4 +7,4 @@ http-request " ^https:\/\/(raw|gist)\.githubusercontent\.com" header-add Accept-
 http-request " ^https:\/\/github\.com" header-add Accept-Language en-us
 
 [MITM]
-hostname = raw.githubusercontent.com, gist.githubusercontent.com, github.com
+hostname = %APPEND% raw.githubusercontent.com, gist.githubusercontent.com, github.com
