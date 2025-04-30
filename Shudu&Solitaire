@@ -1,12 +1,12 @@
 # NAME: 数独&Solitaire去广告
 
-#数独
+# 数独
 DOMAIN,open.e.kuaishou.cn
 DOMAIN-SUFFIX,beizi.biz
 DOMAIN-SUFFIX,magicacid.cn
 DOMAIN-SUFFIX,sigmob.cn
 DOMAIN-SUFFIX,togothermany.cn
 
-#Solitaire
+# Solitaire
 DOMAIN-SUFFIX,applovin.com
 DOMAIN-SUFFIX,applvn.com
