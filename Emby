@@ -1,15 +1,5 @@
-# NAME:Emby服务器自用
+# NAME:自用Emby
 # AcEmby
 DOMAIN-SUFFIX,zox.show
 # NyaEmby
 DOMAIN-SUFFIX,bangumi.ca
-# 鹅服
-DOMAIN-SUFFIX,cavps.eu.org
-DOMAIN-SUFFIX,50.114.55.29
-DOMAIN-SUFFIX,wmxz.567996.xyz
-DOMAIN-SUFFIX,e-hk-1.vfing.de
-DOMAIN-SUFFIX,e-hk-2.vfing.de
-DOMAIN-SUFFIX,e-us.vfing.de
-DOMAIN-SUFFIX,e-jp.vfing.de
-DOMAIN-SUFFIX,e-jp-2.vfing.de
-DOMAIN-SUFFIX,43.143.248.18
