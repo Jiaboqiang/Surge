@@ -1,6 +1,7 @@
 # NAME: 数独&Solitaire去广告
 
 # 数独
+DOMAIN-SUFFIX,api-access.pangolin-sdk-toutiao-b.com
 DOMAIN-SUFFIX,beizi.biz
 DOMAIN-SUFFIX,magicacid.cn
 DOMAIN-SUFFIX,open.e.kuaishou.cn
