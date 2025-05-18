@@ -1,8 +1,5 @@
-# NAME:自用Emby
 # AcEmby
 DOMAIN-SUFFIX,zox.show
+
 # NyaEmby
 DOMAIN-SUFFIX,bangumi.ca
-# Onyra
-DOMAIN-SUFFIX,onyra.cc
-DOMAIN-SUFFIX,onyra.uk
