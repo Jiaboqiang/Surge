@@ -1,6 +1,7 @@
 # NAME: 数独&Solitaire去广告
 
 # 数独
+DOMAIN,tnc3-alisc1.zijieapi.com
 DOMAIN-SUFFIX,api-access.pangolin-sdk-toutiao-b.com
 DOMAIN-SUFFIX,beizi.biz
 DOMAIN-SUFFIX,dsp-x.jd.com
@@ -13,6 +14,7 @@ DOMAIN-SUFFIX,pangolin-sdk-toutiao.com
 DOMAIN-SUFFIX,sigmob.cn
 DOMAIN-SUFFIX,togothermany.cn
 DOMAIN-SUFFIX,xlog.jd.com
+
 
 
 # Solitaire
