@@ -1,25 +1,4 @@
-# NAME: 数独&Solitaire去广告
+# NAME:Solitaire去广告
 
-# 数独
-DOMAIN,tnc3-alisc1.zijieapi.com
-DOMAIN-SUFFIX,api-access.pangolin-sdk-toutiao-b.com
-DOMAIN-SUFFIX,beizi.biz
-DOMAIN-SUFFIX,dsp-x.jd.com
-DOMAIN-SUFFIX,gdt.qq.com
-DOMAIN-SUFFIX,janapi.jd.com
-DOMAIN-SUFFIX,magicacid.cn
-DOMAIN-SUFFIX,mobads.baidu.com
-DOMAIN-SUFFIX,open.e.kuaishou.cn
-DOMAIN-SUFFIX,open.e.kuaishou.com
-DOMAIN-SUFFIX,pangolin-sdk-toutiao.com
-DOMAIN-SUFFIX,s3plus.meituan.net
-DOMAIN-SUFFIX,sigmob.cn
-DOMAIN-SUFFIX,togothermany.cn
-DOMAIN-SUFFIX,togothermany.com
-DOMAIN-SUFFIX,xlog.jd.com
-
-
-
-# Solitaire
 DOMAIN-SUFFIX,applovin.com
 DOMAIN-SUFFIX,applvn.com
